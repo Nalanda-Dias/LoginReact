@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useState} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import Login from './screen/Login';
+import Principal from './screen/Principal';
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+function MyStack(){
   return (
-    <View style={styles.container}>
-      <Text>Hello Word</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Principal" component={Principal}/>
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ff847c',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App()
+{
+  return (
+    <NavigationContainer>
+      <MyStack/>
+    </NavigationContainer>
+  );
+}
